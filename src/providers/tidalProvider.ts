@@ -13,6 +13,11 @@ export default class TidalProvider extends Provider {
     public readonly supports = [ProviderType.Track, ProviderType.Album, ProviderType.Artist];
 
     public async search(query: string, type?: TidalSearchType): Promise<string | undefined> {
+        // Return undefined if Tidal client is not initialized
+        if (!ClientManager.tidalClient) {
+            return undefined;
+        }
+
         const res = await ClientManager.tidalClient.search(query, {
             include: [type || TidalSearchType.Tracks]
         })

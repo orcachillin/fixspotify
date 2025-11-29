@@ -2,8 +2,10 @@
 
 import fs from "fs";
 import path from "path";
+import { Logger } from "@gurrrrrrett3/protocol";
 
 export default class StatsManager {
+    public static logger = new Logger("StatsManager")
     public static readonly countsPath = path.resolve("./counts.json");
 
     public static counts: {
@@ -69,6 +71,8 @@ export default class StatsManager {
         this.saveInterval = setInterval(() => {
             this.save();
         }, this.saveIntervalTime);
+
+        this.logger.log("Stats manager initialized")
     }
 
     public static save() {

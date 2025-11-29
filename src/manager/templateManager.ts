@@ -2,8 +2,10 @@
 
 import { readdirSync, readFileSync } from "fs"
 import { resolve } from "path"
+import { Logger } from "@gurrrrrrett3/protocol"
 
 export default class TemplateManager {
+    public static logger = new Logger("TemplateManager")
     public static templates: Record<string, string> = {}
     public static readonly sharedHead = readFileSync(resolve("./src/templates/misc/sharedHead.html"), "utf-8").replace(/[\n\t]/g, "")
     public static readonly playlistHead = readFileSync(resolve("./src/templates/misc/playlistHead.html"), "utf-8").replace(/[\n\t]/g, "")
@@ -16,6 +18,8 @@ export default class TemplateManager {
             TemplateManager.templates[page] = readFileSync(resolve(pagesDir, `${page}.html`), "utf-8").replace(/[\n\t]/g, "")
 
         }
+
+        this.logger.log(`Loaded ${pages.length} templates`)
     }
 
     public static getTemplate(name: string, data: Record<string, string> = {}): string {

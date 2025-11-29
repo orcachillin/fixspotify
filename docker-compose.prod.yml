@@ -1,0 +1,52 @@
+# docker-compose.prod.yml
+
+---
+
+services:
+  fixspotify:
+    build:
+      context: .
+      target: production
+      dockerfile: Dockerfile
+
+    # Load production environment variables from separate file first (optional - will be ignored if file doesn't exist)
+    env_file:
+      - path: .env.production
+        required: false
+
+    # Environment variables with defaults (takes precedence over .env.production if file exists)
+    environment:
+      - NODE_ENV=${NODE_ENV:-production}
+      - PORT=${PORT:-3000}
+
+    # Ports (comment out or remove to run without publishing)
+    ports:
+      - "${HOST_PORT:-3000}:${PORT:-3000}"
+
+    # Production restart policy - always restart unless explicitly stopped
+    restart: unless-stopped
+
+    # Health check using existing /stats endpoint
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:${PORT:-3000}/stats"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+    # Production resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+
+    # Logging configuration to prevent disk space issues
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

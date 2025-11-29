@@ -33,6 +33,20 @@ openRouter.get("/", (req, res) => {
     res.sendFile(resolve("./dist/client/pages/config.html"));
 });
 
+openRouter.get("/health", (req, res) => {
+    res.json({
+        status: "ok",
+        timestamp: new Date().toISOString(),
+        uptime: process.uptime(),
+        service: "fixspotify",
+        version: "1.0.0"
+    })
+})
+
+openRouter.get("/healthz", (req, res) => {
+    res.status(200).send("OK")
+})
+
 openRouter.get("/view", (req, res) => {
     res.sendFile(resolve("./dist/client/pages/view.html"));
 })

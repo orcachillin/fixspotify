@@ -1,11 +1,16 @@
 // link.ts
 
-import { Router } from 'express';
+import { Router, Request, Response, NextFunction } from 'express';
 import fetch from "node-fetch"
 
 const linkRouter = Router();
 
 const searchString = '<meta property="og:url" content="'
+
+linkRouter.use((req: Request, res: Response, next: NextFunction) => {
+    console.log(`[LINK] ${req.method} ${req.path}`);
+    next();
+});
 
 linkRouter.get("/", (req, res) => {
     res.redirect("https://fixspotify.com")

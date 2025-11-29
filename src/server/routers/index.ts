@@ -1,12 +1,17 @@
 // index.ts
 
-import { Router } from 'express';
+import { Router, Request, Response, NextFunction } from 'express';
 import { resolve } from 'path';
 import { TrackCache } from '../../cache/impl/track.js';
 import { AlbumCache } from '../../cache/impl/album.js';
 import { maintenanceMode } from '../../index.js';
 import StatsManager from '../../manager/statsManager.js';
 const indexRouter = Router();
+
+indexRouter.use((req: Request, res: Response, next: NextFunction) => {
+    console.log(`[INDEX] ${req.method} ${req.path}`);
+    next();
+});
 
 indexRouter.get("/", (req, res) => {
     if (maintenanceMode) {
@@ -16,6 +21,20 @@ indexRouter.get("/", (req, res) => {
 
     res.sendFile(resolve("./dist/client/pages/index.html"));
 });
+
+indexRouter.get("/health", (req, res) => {
+    res.json({
+        status: "ok",
+        timestamp: new Date().toISOString(),
+        uptime: process.uptime(),
+        service: "fixspotify",
+        version: "1.0.0"
+    })
+})
+
+indexRouter.get("/healthz", (req, res) => {
+    res.status(200).send("OK")
+})
 
 indexRouter.get("/stats", (req, res) => {
 
