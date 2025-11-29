@@ -1,3 +1,5 @@
+// tidalProvider.ts
+
 import Provider, { ProviderType } from "../classes/provider.js";
 import { TidalSearchType } from "../clients/tidalClient.js";
 import ClientManager from "../manager/clientManager.js";

@@ -1,3 +1,5 @@
+// link.ts
+
 import { Router } from 'express';
 import fetch from "node-fetch"
 
@@ -20,6 +22,5 @@ linkRouter.get("/:token", async (req, res) => {
     url.hostname = "open.fixspotify.com"
     res.redirect(url.toString())
 })
-
 
 export default linkRouter;

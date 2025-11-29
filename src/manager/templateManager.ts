@@ -1,3 +1,5 @@
+// templateManager.ts
+
 import { readdirSync, readFileSync } from "fs"
 import { resolve } from "path"
 
@@ -38,6 +40,5 @@ export default class TemplateManager {
 
         return template
     }
-
 
 }

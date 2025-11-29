@@ -1,3 +1,5 @@
+// clientManager.ts
+
 import SpotifyClient from "../clients/spotifyClient.js";
 import TidalClient from "../clients/tidalClient.js";
 

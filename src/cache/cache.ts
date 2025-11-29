@@ -1,3 +1,5 @@
+// cache.ts
+
 export default class Cache<CachedType, CacheKey = string> {
     private _cache: Map<
         CacheKey,

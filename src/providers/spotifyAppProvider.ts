@@ -1,3 +1,5 @@
+// spotifyAppProvider.ts
+
 import Provider, { ProviderOptions, ProviderType } from "../classes/provider.js";
 
 export default class SpotifyProvider extends Provider {

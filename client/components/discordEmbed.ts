@@ -1,3 +1,5 @@
+// discordEmbed.ts
+
 import '../styles/discordEmbed.css'
 import cover from '../assets/images/starfall.webp'
 import profile from '../assets/images/profile.webp'

@@ -1,3 +1,5 @@
+// fixSpotifyProvider.ts
+
 import Provider, { ProviderOptions, ProviderType } from "../classes/provider.js";
 
 export default class FixSpotifyProvider extends Provider {

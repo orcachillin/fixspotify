@@ -1,3 +1,5 @@
+// provider.ts
+
 export default abstract class Provider {
     public abstract readonly id: string;
     public abstract readonly name: string;
@@ -28,7 +30,6 @@ export default abstract class Provider {
     public supportsType(type: ProviderType): boolean {
         return this.supports.includes(type);
     }
-
 
     public async get(type: ProviderType, options: ProviderOptions): Promise<string | undefined> {
 

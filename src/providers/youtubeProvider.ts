@@ -1,3 +1,5 @@
+// youtubeProvider.ts
+
 import ytsr from "@distube/ytsr";
 import Provider, { ProviderType } from "../classes/provider.js";
 
@@ -22,7 +24,5 @@ export default class YoutubeProvider extends Provider {
         if (!res.items.length) return undefined;
         return res.items[0].url
     }
-
-
 
 }

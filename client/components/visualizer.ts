@@ -1,3 +1,5 @@
+// visualizer.ts
+
 import '../styles/visualizer.css'
 import '../styles/providers.css'
 import { providers } from "../scripts/providers.ts"
@@ -146,7 +148,7 @@ export async function initVisualizer() {
     default:
       break;
   }
-  
+
   const coverColor = await getColors(coverEl);
   container.setAttribute("style", `--coverColor: ${coverColor.ac}; --bgCoverColor: ${coverColor.bg}`);
 }

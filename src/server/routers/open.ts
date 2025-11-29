@@ -1,3 +1,5 @@
+// open.ts
+
 import { NextFunction, Request, Response, Router } from 'express';
 import { resolve } from 'path';
 import TemplateManager from '../../manager/templateManager.js';
@@ -86,7 +88,6 @@ openRouter.get("/api", async (req, res) => {
         providers: ProviderManager.providers
     });
 })
-
 
 // get media info
 openRouter.get("/api/info/:type/:id", async (req, res) => {
@@ -190,4 +191,3 @@ openRouter.get("/api/providers", async (req, res) => {
 })
 
 export default openRouter;
-

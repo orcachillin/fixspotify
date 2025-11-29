@@ -1,3 +1,5 @@
+// tidalClient.ts
+
 import fetch from "node-fetch";
 import { Logger } from "@gurrrrrrett3/protocol";
 
@@ -114,7 +116,6 @@ export default class TidalClient {
         return json;
     }
 }
-
 
 export interface TidalResponse<Type extends string = string> {
     type: Type;

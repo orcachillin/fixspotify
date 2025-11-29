@@ -1,3 +1,5 @@
+// nav.ts
+
 import '../styles/nav.css'
 import fixspotify from '../assets/icons/fixspotify.svg';
 

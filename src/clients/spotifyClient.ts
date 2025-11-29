@@ -1,3 +1,5 @@
+// spotifyClient.ts
+
 import { Artist, Client as SpotifyApiClient, Track } from "spotify-api.js";
 import { TrackCache } from "../cache/impl/track.js";
 import { AlbumCache } from "../cache/impl/album.js";
@@ -227,6 +229,5 @@ export default class SpotifyClient {
 
         return track.previewURL;
     }
-
 
 }

@@ -1,3 +1,5 @@
+// providers.ts
+
 import fixspotify from '../assets/icons/fixspotify.svg';
 import spotify from '../assets/icons/spotify.svg';
 import youtube from '../assets/icons/youtube.svg';
@@ -42,9 +44,9 @@ export const providers = {
         icon: tidal,
     },
 
-    // [gart] not sure how this will be handled, considering how soundcloud works 
+    // [gart] not sure how this will be handled, considering how soundcloud works
 
-    // soundcloud: {    
+    // soundcloud: {
     //     name: "SoundCloud",
     //     color: "#FF5500",
     //     icon: soundcloud,

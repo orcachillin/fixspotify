@@ -1,3 +1,5 @@
+// index.ts
+
 import "dotenv/config";
 import Webserver from "./server/index.js";
 import TemplateManager from "./manager/templateManager.js";

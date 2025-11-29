@@ -1,3 +1,5 @@
+// analyticsManager.ts
+
 import { Client, Logger } from '@gurrrrrrett3/protocol'
 import { AnalyticsChannel } from './analyticsChannel.js';
 import CacheAnalytics from './cacheAnalytics.js';

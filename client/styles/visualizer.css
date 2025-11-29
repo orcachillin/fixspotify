@@ -1,3 +1,5 @@
+/* visualizer.css */
+
 .visualizer-container {
 	position: relative;
 	padding: 1rem;
@@ -61,13 +63,13 @@
 
 .visualizer-container .tracks-container {
 	width: 100%;
-	display: none; /* none || flex*/ 
+	display: none; /* none || flex*/
 	flex-direction: column;
 	gap: 0.5rem;
 }
 
 .visualizer-container .tracks-container .track {
-	display: none; /* none || flex*/ 
+	display: none; /* none || flex*/
 	flex-direction: row;
 	align-items: flex-start;
 	gap: 1rem;

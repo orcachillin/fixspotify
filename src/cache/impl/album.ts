@@ -1,3 +1,5 @@
+// album.ts
+
 import ClientManager from "../../manager/clientManager.js";
 import RequestErrorHandler from "../../manager/requestErrorHandler.js";
 import UpdateableCache from "../updatableCache.js";

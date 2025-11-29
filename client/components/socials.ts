@@ -1,3 +1,5 @@
+// socials.ts
+
 import '../styles/socials.css'
 import githubIcon from '../assets/icons/github.svg';
 import emailIcon from '../assets/icons/email.svg';

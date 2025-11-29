@@ -1,3 +1,5 @@
+/* stats.css */
+
 .stats {
 	width: 100%;
 	display: flex;
@@ -14,7 +16,7 @@
 	width: 100%;
 	display: grid;
   grid-template-columns: 1fr 1fr;
-	grid-template-areas: 
+	grid-template-areas:
 		"total total"
 		"track album"
 		"last last";

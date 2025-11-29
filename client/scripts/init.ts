@@ -1,3 +1,5 @@
+// init.ts
+
 import { initNav } from '../components/nav.ts'
 import { initDisclaimer } from '../components/disclaimer.ts'
 import { initStats, cleanupStats } from '../components/stats.ts'

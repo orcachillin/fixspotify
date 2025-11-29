@@ -1,3 +1,5 @@
+// requestErrorHandler.ts
+
 import { maintenanceMode, setMaintenanceMode } from "../index.js"
 
 export default class RequestErrorHandler {

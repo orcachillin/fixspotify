@@ -1,3 +1,5 @@
+// cacheAnalytics.ts
+
 import { AlbumCache } from "../cache/impl/album.js";
 import { TrackCache } from "../cache/impl/track.js";
 import AnalyticsManager from "./analyticsManager.js";

@@ -1,3 +1,5 @@
+// stats.ts
+
 import '../styles/stats.css'
 import placeholder from "../assets/images/placeholder.svg"
 

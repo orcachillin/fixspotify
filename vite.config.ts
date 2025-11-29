@@ -1,3 +1,5 @@
+// vite.config.ts
+
 import 'dotenv/config';
 import { defineConfig } from "vite";
 import { readdirSync } from "fs";

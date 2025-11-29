@@ -1,4 +1,6 @@
-.socials {    
+/* socials.css */
+
+.socials {
   width: fit-content;
   display: flex;
   flex-direction: column;

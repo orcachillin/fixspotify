@@ -1,3 +1,5 @@
+// analyticsChannel.ts
+
 import { Channel } from "@gurrrrrrett3/protocol";
 
 export const AnalyticsChannel = new Channel<{

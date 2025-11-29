@@ -1,3 +1,5 @@
+// down.ts
+
 export function initDownPage() {
 window.addEventListener("DOMContentLoaded", () => {
         const openOnSpotify = document.getElementById("open-on-spotify") as HTMLAnchorElement

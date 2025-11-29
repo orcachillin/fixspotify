@@ -1,3 +1,5 @@
+// index.ts
+
 import { Server, createServer } from "http";
 import express, { Application } from "express";
 import { resolve } from "path";
@@ -30,8 +32,8 @@ export default class Webserver {
 
             fixspotify.com
             open.fixspotify.com - handles actual embeds
-            fixspotify.link - handles 
-            
+            fixspotify.link - handles
+
         */
 
         this.app.use((req, res, next) => {

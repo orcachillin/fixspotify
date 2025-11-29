@@ -1,3 +1,5 @@
+// disclaimer.ts
+
 import '../styles/disclaimer.css'
 
 export function initDisclaimer() {
