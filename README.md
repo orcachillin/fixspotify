@@ -116,4 +116,4 @@ Check current version: `curl http://localhost:3000/health`
 
 ## License
 
-ISC
+**FIXME**
