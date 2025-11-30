@@ -103,6 +103,7 @@ npm version major  # 1.0.0 → 2.0.0 (breaking changes)
 This updates `package.json`, creates a git commit, and tags the release.
 
 **Version display:**
+
 - Development: Shows `package.json` version + git commit hash (e.g., `1.0.0-846ffc1`)
 - Production: Shows clean semantic version from `package.json` (e.g., `1.0.0`)
 
