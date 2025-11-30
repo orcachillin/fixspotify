@@ -6,30 +6,32 @@ Quick guide to verify FixSpotify is running correctly.
 
 ### 1. Service is Running
 
-```bash
-curl http://localhost:3000/stats
+```shell
+curl http://localhost:3000/health
 ```
 
 Should return JSON with statistics. If it responds, the server is alive.
 
 ### 2. Test a Track Embed
 
-```bash
+```shell
 curl http://localhost:3000/track/3n3Ppam7vgaVa1iaRUc9Lp
 ```
 
 Should return HTML with OpenGraph meta tags. Look for:
+
 - `<meta property="og:title"` - Track name
 - `<meta property="og:description"` - Track info
 - `<meta property="og:image"` - Album art URL
 
 ### 3. Test API Info Endpoint
 
-```bash
+```shell
 curl http://localhost:3000/api/info/track/3n3Ppam7vgaVa1iaRUc9Lp
 ```
 
 Should return JSON with track metadata:
+
 ```json
 {
   "name": "Track Name",
@@ -41,7 +43,7 @@ Should return JSON with track metadata:
 
 ### 4. Test Provider List
 
-```bash
+```shell
 curl http://localhost:3000/api/providers
 ```
 
@@ -50,28 +52,34 @@ Should return available music providers (Spotify, YouTube, Tidal, etc).
 ## Visual Test (Browser)
 
 1. **Main Page:**
-   ```
+
+   ```text
    http://localhost:3000/
    ```
+
    Should show the FixSpotify landing page.
 
 2. **Config Page:**
-   ```
+
+   ```text
    http://localhost:3000/view
    ```
+
    Should show provider configuration interface.
 
 3. **Track Embed:**
-   ```
+
+   ```text
    http://localhost:3000/track/3n3Ppam7vgaVa1iaRUc9Lp
    ```
+
    Should display track info with album art and redirect button.
 
 ## Docker Health Check
 
 If running with Docker:
 
-```bash
+```shell
 # Check container health status
 docker ps
 
@@ -80,7 +88,7 @@ docker ps
 
 Or inspect health directly:
 
-```bash
+```shell
 docker inspect <container-id> --format='{{json .State.Health}}'
 ```
 
@@ -89,14 +97,16 @@ docker inspect <container-id> --format='{{json .State.Health}}'
 ### Server Won't Start
 
 **Check environment variables:**
-```bash
+
+```shell
 # Required: Spotify API credentials
 grep SPOTIFY_CLIENT_ID .env
 grep SPOTIFY_CLIENT_SECRET .env
 ```
 
 **Check port availability:**
-```bash
+
+```shell
 lsof -i :3000
 # Or
 netstat -tuln | grep 3000
@@ -117,7 +127,8 @@ netstat -tuln | grep 3000
 ### Provider Redirect Fails
 
 **Check provider availability:**
-```bash
+
+```shell
 curl http://localhost:3000/api/providers
 ```
 
@@ -127,27 +138,28 @@ Verify the provider you're testing is not marked as `disabled: true`.
 
 ### 1. Domain Resolution
 
-```bash
+```shell
 # Check DNS
 dig open.fixspotify.com
 dig fixspotify.link
 
 # Test HTTPS
-curl -I https://open.fixspotify.com/stats
+curl -I https://open.fixspotify.com/health
 ```
 
 ### 2. Health Endpoint
 
-```bash
-curl https://open.fixspotify.com/stats
+```shell
+curl https://open.fixspotify.com/health
 ```
 
-Should return stats JSON without errors.
+Should return health JSON without errors.
 
 ### 3. Test Real Spotify Link
 
 Pick any Spotify track URL and replace the domain:
-```
+
+```text
 https://open.spotify.com/track/3n3Ppam7vgaVa1iaRUc9Lp
 →
 https://open.fixspotify.com/track/3n3Ppam7vgaVa1iaRUc9Lp
@@ -160,17 +172,20 @@ Paste in Discord - should show rich embed with track info.
 ### Check Logs
 
 **Node.js:**
-```bash
+
+```shell
 npm start
 # Watch for startup message: "Server started on port 3000"
 ```
 
 **Docker:**
-```bash
+
+```shell
 docker-compose logs -f
 ```
 
 **Look for:**
+
 - ✅ "Server started on port 3000"
 - ✅ "Loaded provider <name>"
 - ✅ "ProviderManager" initialization logs
@@ -178,7 +193,7 @@ docker-compose logs -f
 
 ### Performance Check
 
-```bash
+```shell
 # Response time test
 time curl -s http://localhost:3000/track/3n3Ppam7vgaVa1iaRUc9Lp > /dev/null
 ```
@@ -188,7 +203,7 @@ Should complete in < 1 second (first request may be slower due to Spotify API ca
 ## Quick Checklist
 
 - [ ] Server responds on port 3000
-- [ ] `/stats` returns JSON
+- [ ] `/health` returns JSON
 - [ ] Track embed returns HTML with meta tags
 - [ ] API endpoints return valid JSON
 - [ ] Provider list is not empty
