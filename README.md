@@ -89,6 +89,7 @@ docker-compose -f docker-compose.prod.yml up -d
 - `TIDAL_CLIENT_SECRET`
 - `ANALYTICS_ENABLED` - Enable custom analytics (default: false)
 - `DEV_FORCE_OPEN` - Force open.fixspotify.com routing locally (dev only)
+- `DEV_FORCE_LINK` - Force fixspotify.link routing locally (dev only)
 
 ## Versioning
 
