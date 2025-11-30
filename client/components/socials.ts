@@ -1,8 +1,8 @@
 // socials.ts
 
-import '../styles/socials.css'
-import githubIcon from '../assets/icons/github.svg';
-import emailIcon from '../assets/icons/email.svg';
+import "../styles/socials.css";
+import githubIcon from "../assets/icons/github.svg";
+import emailIcon from "../assets/icons/email.svg";
 
 export function initSocials() {
   const socials = `
@@ -21,7 +21,7 @@ export function initSocials() {
       </li>
     </ul>
   `;
-  const socialsContainer = document.getElementById('socials-container');
+  const socialsContainer = document.getElementById("socials-container");
   if (socialsContainer) {
     socialsContainer.innerHTML = socials;
   }

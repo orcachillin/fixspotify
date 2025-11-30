@@ -11,7 +11,8 @@ Intercepts Spotify URLs and generates better embeds with actual metadata. Also l
 Replace `open.spotify.com` with `open.fixspotify.com` or `spotify.link` with `fixspotify.link`. Done.
 
 **Example:**
-```
+
+```text
 https://open.spotify.com/track/...
     ↓
 https://open.fixspotify.com/track/...
@@ -21,7 +22,7 @@ https://open.fixspotify.com/track/...
 
 ### Quick Start
 
-```bash
+```shell
 git clone https://github.com/gurrrrrrett3/fixspotify
 cd fixspotify
 
@@ -39,7 +40,7 @@ Server runs on `http://localhost:3000`
 
 ### Dev Mode (with hot reload)
 
-```bash
+```shell
 npm run dev
 ```
 
@@ -48,17 +49,20 @@ Runs Vite (client), TypeScript compiler (server), and nodemon concurrently.
 ### Docker
 
 **Development:**
-```bash
+
+```shell
 export DOCKER_BUILDKIT=1
 docker-compose up
 ```
 
 **Development with Watch Mode** (auto-sync file changes):
-```bash
+
+```shell
 docker compose watch
 ```
 
 Combines volume mounts with Docker's watch feature:
+
 - Initial files loaded via volume mounts
 - Changes sync automatically via watch
 - Config files trigger container restart
@@ -66,24 +70,25 @@ Combines volume mounts with Docker's watch feature:
 - Note: Warning about "path also declared by volume" is expected and harmless
 
 **Production:**
-```bash
+
+```shell
 docker-compose -f docker-compose.prod.yml up -d
 ```
 
 ## Environment Variables
 
 **Required:**
+
 - `SPOTIFY_CLIENT_ID` - Your Spotify API client ID
 - `SPOTIFY_CLIENT_SECRET` - Your Spotify API client secret
 
 **Optional:**
+
 - `PORT` - Server port (default: 3000)
-- `TIDAL_CLIENT_ID` - Tidal API credentials (for Tidal provider)
+- `TIDAL_CLIENT_ID` - Tidal API credentials
 - `TIDAL_CLIENT_SECRET`
 - `ANALYTICS_ENABLED` - Enable custom analytics (default: false)
 - `DEV_FORCE_OPEN` - Force open.fixspotify.com routing locally (dev only)
-
-See the [Spotify API Setup Guide](docs/SPOTIFY_API_SETUP.md) for detailed instructions.
 
 ## Documentation
 

@@ -18,7 +18,7 @@
 .available-providers > h2,
 .disabled-providers > h2,
 .select-provider > h2 {
-	font-size: 1.25rem;
+  font-size: 1.25rem;
   text-transform: uppercase;
 }
 

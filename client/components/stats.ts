@@ -1,7 +1,7 @@
 // stats.ts
 
-import '../styles/stats.css'
-import placeholder from "../assets/images/placeholder.svg"
+import "../styles/stats.css";
+// import placeholder from "../assets/images/placeholder.svg"
 
 interface StatsData {
   counts: {
@@ -10,15 +10,15 @@ interface StatsData {
     album?: number;
     artist?: number;
     playlist?: number;
-  }
+  };
   lastRequests: {
-    addedAt?: number,
-    type: string,
-    name: string,
-    description: string
-    image: string,
-    url: string
-  }[]
+    addedAt?: number;
+    type: string;
+    name: string;
+    description: string;
+    image: string;
+    url: string;
+  }[];
 }
 
 let previousValues: StatsData = {
@@ -29,23 +29,27 @@ let previousValues: StatsData = {
     artist: undefined,
     playlist: undefined,
   },
-  lastRequests: [{
-    addedAt: undefined,
-    type: '',
-    name: '',
-    description: '',
-    image: '',
-    url: ''
-  }]
+  lastRequests: [
+    {
+      addedAt: undefined,
+      type: "",
+      name: "",
+      description: "",
+      image: "",
+      url: "",
+    },
+  ],
 };
 
 function formatNumber(number: number, decimalPlaces = 0): string {
-  return new Intl.NumberFormat('en-US', {
+  return new Intl.NumberFormat("en-US", {
     maximumFractionDigits: decimalPlaces,
     minimumFractionDigits: decimalPlaces,
     useGrouping: true,
-    style: 'decimal'
-  }).format(number).replace(/,/g, ' ');
+    style: "decimal",
+  })
+    .format(number)
+    .replace(/,/g, " ");
 }
 
 function createAnimatedDigits(current: number, previous?: number): string {
@@ -54,8 +58,8 @@ function createAnimatedDigits(current: number, previous?: number): string {
 
   let container = '<section class="animated-number">';
   const maxLength = Math.max(currentStr.length, previousStr.length);
-  const paddedCurrent = currentStr.padStart(maxLength, ' ');
-  const paddedPrevious = previousStr.padStart(maxLength, ' ');
+  const paddedCurrent = currentStr.padStart(maxLength, " ");
+  const paddedPrevious = previousStr.padStart(maxLength, " ");
 
   const changedDigits = [];
   for (let i = 0; i < maxLength; i++) {
@@ -72,22 +76,22 @@ function createAnimatedDigits(current: number, previous?: number): string {
     const staggerDelay = staggerIndex >= 0 ? staggerIndex * 100 : 0;
 
     if (hasChanged) {
-      if (currentDigit === ' ') {
+      if (currentDigit === " ") {
         container += '<span class="digit-wrapper">&nbsp;</span>';
       } else {
         container += `
           <span class="digit-wrapper">
-            <span class="digit item-exit" style="animation-delay: ${staggerDelay}ms;">${previousDigit === ' ' ? '&nbsp;' : previousDigit}</span>
+            <span class="digit item-exit" style="animation-delay: ${staggerDelay}ms;">${previousDigit === " " ? "&nbsp;" : previousDigit}</span>
             <span class="digit item-enter" style="animation-delay: ${staggerDelay}ms;">${currentDigit}</span>
           </span>
         `;
       }
     } else {
-      container += `<span class="digit-wrapper"><span class="digit${currentDigit === ' ' ? ' digit-space' : ''}">${currentDigit === ' ' ? '&nbsp;' : currentDigit}</span></span>`;
+      container += `<span class="digit-wrapper"><span class="digit${currentDigit === " " ? " digit-space" : ""}">${currentDigit === " " ? "&nbsp;" : currentDigit}</span></span>`;
     }
   }
 
-  container += '</section>';
+  container += "</section>";
   return container;
 }
 
@@ -105,17 +109,17 @@ function createAnimatedText(current: string | undefined, previous: string, delay
     container += `<span class="text-wrapper"><span class="text">${current}</span></span>`;
   }
 
-  container += '</section>';
+  container += "</section>";
   return container;
 }
 
 async function fetchStats(): Promise<StatsData> {
-  const response = await fetch('https://fixspotify.com/stats');
+  const response = await fetch("https://fixspotify.com/stats");
   return await response.json();
 }
 
 function initializeStatsContainer() {
-  const statsContainer = document.getElementById('stats-container');
+  const statsContainer = document.getElementById("stats-container");
   if (!statsContainer) return;
 
   statsContainer.innerHTML = `
@@ -158,29 +162,43 @@ function initializeStatsContainer() {
 async function updateStats() {
   try {
     const data = await fetchStats();
-    const statsContainer = document.getElementById('stats-container');
+    const statsContainer = document.getElementById("stats-container");
     if (!statsContainer) return;
 
-    const totalSection = statsContainer.querySelector('.stats-total .animated-number') as HTMLDivElement;
+    const totalSection = statsContainer.querySelector(".stats-total .animated-number") as HTMLDivElement;
     if (totalSection) totalSection.outerHTML = createAnimatedDigits(data.counts.total!, previousValues.counts.total);
 
-    const trackSection = statsContainer.querySelector('.stats-track .animated-number') as HTMLDivElement;
+    const trackSection = statsContainer.querySelector(".stats-track .animated-number") as HTMLDivElement;
     if (trackSection) trackSection.outerHTML = createAnimatedDigits(data.counts.track!, previousValues.counts.track);
 
-    const albumSection = statsContainer.querySelector('.stats-album .animated-number') as HTMLDivElement;
+    const albumSection = statsContainer.querySelector(".stats-album .animated-number") as HTMLDivElement;
     if (albumSection) albumSection.outerHTML = createAnimatedDigits(data.counts.album!, previousValues.counts.album);
 
     if (data.lastRequests && data.lastRequests.length > 0) {
       const lastRequest = data.lastRequests[0];
-      const lastRequestSection = statsContainer.querySelector('.stats-last a') as HTMLAnchorElement;
-      const lastRequestImage = statsContainer.querySelector('.stats-last img') as HTMLImageElement;
-      const lastRequestTitle = statsContainer.querySelector('.stats-last .song-details .song-title .animated-text') as HTMLDivElement;
-      const lastRequestArtist = statsContainer.querySelector('.stats-last .song-details .song-artist .animated-text') as HTMLDivElement;
+      const lastRequestSection = statsContainer.querySelector(".stats-last a") as HTMLAnchorElement;
+      const lastRequestImage = statsContainer.querySelector(".stats-last img") as HTMLImageElement;
+      const lastRequestTitle = statsContainer.querySelector(
+        ".stats-last .song-details .song-title .animated-text"
+      ) as HTMLDivElement;
+      const lastRequestArtist = statsContainer.querySelector(
+        ".stats-last .song-details .song-artist .animated-text"
+      ) as HTMLDivElement;
 
       lastRequestSection.title = `${data.lastRequests[0].name} by ${data.lastRequests[0].description}`;
       lastRequestSection.href = lastRequest.url;
-      if (lastRequestTitle) lastRequestTitle.outerHTML = createAnimatedText(data.lastRequests[0].name, previousValues.lastRequests[0].name, 100);
-      if (lastRequestArtist) lastRequestArtist.outerHTML = createAnimatedText(data.lastRequests[0].description, previousValues.lastRequests[0].description, 200);
+      if (lastRequestTitle)
+        lastRequestTitle.outerHTML = createAnimatedText(
+          data.lastRequests[0].name,
+          previousValues.lastRequests[0].name,
+          100
+        );
+      if (lastRequestArtist)
+        lastRequestArtist.outerHTML = createAnimatedText(
+          data.lastRequests[0].description,
+          previousValues.lastRequests[0].description,
+          200
+        );
       if (lastRequest.image) {
         const imageUrl = lastRequest.type === "album" ? lastRequest.image.slice(24) : lastRequest.image;
 
@@ -189,7 +207,7 @@ async function updateStats() {
           const tmpImg = new Image();
           tmpImg.onload = () => {
             lastRequestImage.src = imageUrl;
-            lastRequestImage.style.display = 'block';
+            lastRequestImage.style.display = "block";
           };
           tmpImg.src = imageUrl;
         }
@@ -202,12 +220,12 @@ async function updateStats() {
         track: data.counts.track,
         album: data.counts.album,
         artist: data.counts.artist,
-        playlist: data.counts.playlist
+        playlist: data.counts.playlist,
       },
-      lastRequests: [...data.lastRequests]
+      lastRequests: [...data.lastRequests],
     };
   } catch (error) {
-    console.error('Failed to load stats:', error);
+    console.error("Failed to load stats:", error);
   }
 }
 

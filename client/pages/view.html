@@ -1,81 +1,88 @@
 <!-- view.html -->
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1DB954" />
+    <meta property="og:site_name" content="fixSpotify" />
+    <meta property="og:title" content="fixSpotify" />
+    <meta
+      property="og:description"
+      content="Enhances Spotify link sharing by improving how links appear on platforms like Discord. "
+    />
 
-	<meta name="theme-color" content="#1DB954" />
-	<meta property="og:site_name" content="fixSpotify" />
-	<meta property="og:title" content="fixSpotify" />
-	<meta property="og:description"
-		content="Enhances Spotify link sharing by improving how links appear on platforms like Discord. " />
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/fixspotify.svg" />
+    <link rel="apple-touch-icon" href="../assets/icons/fixspotify.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100..700;1,100..700&family=Kode+Mono:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <link rel="stylesheet" href="../styles/shared.css" />
+    <script src="../scripts/init.ts" type="module"></script>
+    <script src="../components/visualizer.ts" type="module" defer></script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="CF_ANALYTICS"></script>
+    <title>fixSpotify | view</title>
+  </head>
 
-	<link rel="icon" type="image/svg+xml" href="../assets/icons/fixspotify.svg">
-	<link rel="apple-touch-icon" href="../assets/icons/fixspotify.svg">
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
-		rel="stylesheet" />
-	<link
-		href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100..700;1,100..700&family=Kode+Mono:wght@400..700&display=swap"
-		rel="stylesheet">
-	<link rel="preconnect" href="https://rsms.me/">
-	<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-	<link rel="stylesheet" href="../styles/shared.css" />
-	<script src="../scripts/init.ts" type="module"></script>
-	<script src="../components/visualizer.ts" type="module" defer></script>
-	<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='CF_ANALYTICS'></script>
-	<title>fixSpotify | view</title>
-</head>
-
-<body>
-	<section id="nav-container"></section>
-	<section class="grid-wrapper">
-		<aside>
-			<section class="about">
-				<p>Fix your Spotify links</p>
-				<p>By simply replacing <span style="color: var(--softGrey)">open.spotify.com</span> with <span
-						style="color: var(--accentColor)">open.fixspotify.com</span> in your shared links, fixSpotify
-					ensures that your Spotify links display correctly and consistently.</p>
-			</section>
-			<section id="stats-container"></section>
-			<section id="disclaimer-container"></section>
-			<section id="socials-container"></section>
-		</aside>
-		<main>
-			<section id="visualizer-container" class="visualizer-container">
-				<img id="cover" src="../assets/images/placeholder.svg" alt="Cover" />
-				<section class="details">
-					<span id="type" class="type"></span>
-					<span id="title" class="title"></span>
-					<span id="album" class="album"></span>
-					<span id="artist" class="artist"></span>
-					<!-- <span id="description">Description</span> -->
-					<!-- <span id="duration">Duration</span> -->
-				</section>
-				<section id="tracks" class="tracks-container">
-					<a id="track-template" class="track" hidden>
-						<span id="track-id"></span>
-						<section class="track-details">
-							<span id="track-title"></span>
-							<span id="track-artist"></span>
-						</section>
-						<span id="track-duration"></span>
-					</a>
-				</section>
-			</section>
-			<section class="hint">
-				<span>Don't want to see this page?</span>
-				<span>Select your music provider in the <a href="https://open.fixspotify.com">Config</a> and fixSpotify
-					will use it in the future!</span>
-			</section>
-			<section id="providers-redirect-container"></section>
-			<section id="disabled-providers-container"></section>
-		</main>
-	</section>
-</body>
-
+  <body>
+    <section id="nav-container"></section>
+    <section class="grid-wrapper">
+      <aside>
+        <section class="about">
+          <p>Fix your Spotify links</p>
+          <p>
+            By simply replacing <span style="color: var(--softGrey)">open.spotify.com</span> with
+            <span style="color: var(--accentColor)">open.fixspotify.com</span> in your shared links, fixSpotify ensures
+            that your Spotify links display correctly and consistently.
+          </p>
+        </section>
+        <section id="stats-container"></section>
+        <section id="disclaimer-container"></section>
+        <section id="socials-container"></section>
+      </aside>
+      <main>
+        <section id="visualizer-container" class="visualizer-container">
+          <img id="cover" src="../assets/images/placeholder.svg" alt="Cover" />
+          <section class="details">
+            <span id="type" class="type"></span>
+            <span id="title" class="title"></span>
+            <span id="album" class="album"></span>
+            <span id="artist" class="artist"></span>
+            <!-- <span id="description">Description</span> -->
+            <!-- <span id="duration">Duration</span> -->
+          </section>
+          <section id="tracks" class="tracks-container">
+            <a id="track-template" class="track" hidden>
+              <span id="track-id"></span>
+              <section class="track-details">
+                <span id="track-title"></span>
+                <span id="track-artist"></span>
+              </section>
+              <span id="track-duration"></span>
+            </a>
+          </section>
+        </section>
+        <section class="hint">
+          <span>Don't want to see this page?</span>
+          <span
+            >Select your music provider in the <a href="https://open.fixspotify.com">Config</a> and fixSpotify will use
+            it in the future!</span
+          >
+        </section>
+        <section id="providers-redirect-container"></section>
+        <section id="disabled-providers-container"></section>
+      </main>
+    </section>
+  </body>
 </html>

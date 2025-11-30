@@ -27,7 +27,7 @@
 }
 
 .socials li a span::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -0.125rem;
   left: 0;
@@ -43,6 +43,6 @@
 }
 
 .socials li a span::after {
-  content: '↗';
-  font-family: 'Inter', sans-serif;
+  content: "↗";
+  font-family: "Inter", sans-serif;
 }

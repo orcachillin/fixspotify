@@ -29,7 +29,7 @@ Keep the Client Secret secure (treat it like a password).
 
 Add these values to your `.env` file:
 
-```bash
+```shell
 SPOTIFY_CLIENT_ID=your_client_id_here
 SPOTIFY_CLIENT_SECRET=your_client_secret_here
 ```
@@ -46,11 +46,13 @@ Done! The app will automatically handle token generation using these credentials
 ## Troubleshooting
 
 **Server won't start:**
+
 - Verify both variables are set in `.env`
 - Check for typos in variable names
 - Ensure no extra spaces around the values
 
 **API returns 401 Unauthorized:**
+
 - Your credentials may be incorrect
 - Regenerate the Client Secret in the dashboard
 - Update your `.env` file with the new secret

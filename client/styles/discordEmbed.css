@@ -1,119 +1,119 @@
 /* discordEmbed.css */
 
 .discord-embed {
-	width: fit-content;
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .discord-embed > h2 {
-	font-size: 1.25rem;
-	text-transform: uppercase;
+  font-size: 1.25rem;
+  text-transform: uppercase;
 }
 
 .embed {
-	width: 100%;
-	padding: 1rem;
-	border: 1px solid var(--softGrey);
-	border-radius: 0.5rem;
-	background-color: var(--dark);
-	display: flex;
-	flex-direction: row;
-	gap: 1rem;
-	font-size: 0.875rem;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--softGrey);
+  border-radius: 0.5rem;
+  background-color: var(--dark);
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  font-size: 0.875rem;
 }
 
 .profile-picture {
-	width: 32px;
-	height: 32px;
-	aspect-ratio: 1/1;
-	border-radius: 100%;
-	background-color: var(--accentColor);
+  width: 32px;
+  height: 32px;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+  background-color: var(--accentColor);
 }
 
 .embed > div {
-	width: 32px;
-	height: 32px;
-	aspect-ratio: 1/1;
-	border-radius: 100%;
-	background-color: var(--accentColor);
+  width: 32px;
+  height: 32px;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+  background-color: var(--accentColor);
 }
 
 .embed .content {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .embed .content * {
-	font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .embed .content .infos {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	gap: 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .embed .content .infos .username {
-	color: var(--accentColor);
+  color: var(--accentColor);
 }
 
 .embed .content .infos > span:last-child {
-	color: var(--softGrey);
-	font-size: 0.875rem;
+  color: var(--softGrey);
+  font-size: 0.875rem;
 }
 
 .embed .content p {
-	color: var(--linkBlue);
-	font-size: 0.875rem;
-	font-weight: 300;
-	line-break: anywhere;
+  color: var(--linkBlue);
+  font-size: 0.875rem;
+  font-weight: 300;
+  line-break: anywhere;
 }
 
 .embed .content .fixspotify-embed {
-	width: fit-content;
-	padding: 1rem;
-	border-left: 3px solid var(--accentColor);
-	border-radius: 0.5rem;
-	background-color: var(--discordGrey);
-	display: flex;
-	flex-direction: row;
-	gap: 2rem;
-	font-size: 0.875rem;
-	font-weight: 300;
+  width: fit-content;
+  padding: 1rem;
+  border-left: 3px solid var(--accentColor);
+  border-radius: 0.5rem;
+  background-color: var(--discordGrey);
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  font-size: 0.875rem;
+  font-weight: 300;
 }
 
 .embed .content .fixspotify-embed .infos {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
 .embed .content .fixspotify-embed .infos .track-name {
-	color: var(--linkBlue);
-	font-weight: 500;
+  color: var(--linkBlue);
+  font-weight: 500;
 }
 
 .embed .content .fixspotify-embed .infos .details {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .embed .content .fixspotify-embed img {
-	width: 96px;
-	height: 96px;
-	aspect-ratio: 1/1;
-	border-radius: 0.25rem;
+  width: 96px;
+  height: 96px;
+  aspect-ratio: 1/1;
+  border-radius: 0.25rem;
 }
 
 @media (max-width: 768px) {
-	.embed .content .fixspotify-embed {
-		font-size: 0.75rem;
-	}
+  .embed .content .fixspotify-embed {
+    font-size: 0.75rem;
+  }
 }
