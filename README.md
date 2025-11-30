@@ -90,6 +90,24 @@ docker-compose -f docker-compose.prod.yml up -d
 - `ANALYTICS_ENABLED` - Enable custom analytics (default: false)
 - `DEV_FORCE_OPEN` - Force open.fixspotify.com routing locally (dev only)
 
+## Versioning
+
+Version management follows semantic versioning. Use npm's built-in version command:
+
+```shell
+npm version patch  # 1.0.0 → 1.0.1 (bug fixes)
+npm version minor  # 1.0.0 → 1.1.0 (new features)
+npm version major  # 1.0.0 → 2.0.0 (breaking changes)
+```
+
+This updates `package.json`, creates a git commit, and tags the release.
+
+**Version display:**
+- Development: Shows `package.json` version + git commit hash (e.g., `1.0.0-846ffc1`)
+- Production: Shows clean semantic version from `package.json` (e.g., `1.0.0`)
+
+Check current version: `curl http://localhost:3000/health`
+
 ## Documentation
 
 - **[Spotify API Setup](docs/SPOTIFY_API_SETUP.md)** - How to get your Spotify API credentials

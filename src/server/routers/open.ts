@@ -10,6 +10,7 @@ import { TrackCache } from "../../cache/impl/track.js";
 import { AlbumCache } from "../../cache/impl/album.js";
 import { maintenanceMode } from "../../index.js";
 import ClientManager from "../../manager/clientManager.js";
+import { versionInfo } from "../../utils/version.js";
 const openRouter = Router();
 
 openRouter.use((req: Request, res: Response, next: NextFunction) => {
@@ -39,7 +40,7 @@ openRouter.get("/health", (req, res) => {
     timestamp: new Date().toISOString(),
     uptime: process.uptime(),
     service: "fixspotify",
-    version: "1.0.0",
+    ...versionInfo,
   });
 });
 
