@@ -2,6 +2,7 @@
 
 import { Router, Request, Response, NextFunction } from "express";
 import fetch from "node-fetch";
+import { DomainConfig } from "../utils/domainConfig.js";
 
 const linkRouter = Router();
 
@@ -24,7 +25,17 @@ linkRouter.get("/:token", async (req, res) => {
   const endIndex = html.indexOf('"', index);
 
   const url = new URL(html.substring(index, endIndex));
-  url.hostname = "open.fixspotify.com";
+
+  // Use configured open domain instead of hardcoded value
+  const openDomain = DomainConfig.getOpenDomain();
+  const parsedOpenDomain = new URL(openDomain);
+
+  url.hostname = parsedOpenDomain.hostname;
+  url.protocol = parsedOpenDomain.protocol.replace(":", "");
+  if (parsedOpenDomain.port) {
+    url.port = parsedOpenDomain.port;
+  }
+
   res.redirect(url.toString());
 });
 

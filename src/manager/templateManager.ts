@@ -27,7 +27,7 @@ export default class TemplateManager {
     this.logger.log(`Loaded ${pages.length} templates`);
   }
 
-  public static getTemplate(name: string, data: Record<string, string> = {}): string {
+  public static getTemplate(name: string, data: Record<string, string> = {}, baseUrl?: string): string {
     if (!TemplateManager.templates[name]) {
       throw new Error(`Template ${name} not found`);
     }
@@ -37,6 +37,8 @@ export default class TemplateManager {
     }
 
     data["name"] = name;
+
+    data["baseUrl"] = baseUrl || "https://open.fixspotify.com";
 
     let template = TemplateManager.templates[name];
 

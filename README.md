@@ -88,8 +88,20 @@ docker-compose -f docker-compose.prod.yml up -d
 - `TIDAL_CLIENT_ID` - Tidal API credentials
 - `TIDAL_CLIENT_SECRET`
 - `ANALYTICS_ENABLED` - Enable custom analytics (default: false)
+
+**Development Environment Variables:**
+
 - `DEV_FORCE_OPEN` - Force open.fixspotify.com routing locally (dev only)
 - `DEV_FORCE_LINK` - Force fixspotify.link routing locally (dev only)
+- `DEV_OPEN_DOMAIN` - Domain to use for open router redirects in dev mode (default: `http://localhost:3000`)
+- `DEV_LINK_DOMAIN` - Domain to use for link router redirects in dev mode (default: `http://localhost:3000`)
+
+Example `.env` for development:
+
+```bash
+DEV_FORCE_LINK=true
+DEV_LINK_DOMAIN=http://localhost:3002
+```
 
 ## Versioning
 
@@ -117,4 +129,4 @@ Check current version: `curl http://localhost:3000/health`
 
 ## License
 
-**FIXME**
+FIXME

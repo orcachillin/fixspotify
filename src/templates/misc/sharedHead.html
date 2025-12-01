@@ -12,7 +12,7 @@
 <meta property="twitter:site" content="FixSpotify" />
 
 <script>
-	location.href = `https://open.fixspotify.com/redirect/${localStorage.getItem("provider") || "fixSpotify"}/{{name}}/{{id}}`;
+	location.href = `{{baseUrl}}/redirect/${localStorage.getItem("provider") || "fixSpotify"}/{{name}}/{{id}}`;
 </script>
 
 js is disabled, redirecting...

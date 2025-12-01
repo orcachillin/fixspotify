@@ -11,6 +11,7 @@ import { AlbumCache } from "../../cache/impl/album.js";
 import { maintenanceMode } from "../../index.js";
 import ClientManager from "../../manager/clientManager.js";
 import { versionInfo } from "../../utils/version.js";
+import { DomainConfig } from "../utils/domainConfig.js";
 const openRouter = Router();
 
 openRouter.use((req: Request, res: Response, next: NextFunction) => {
@@ -54,22 +55,46 @@ openRouter.get("/view", (req, res) => {
 
 // https://open.spotify.com/track/id
 openRouter.get("/track/:id", async (req, res) => {
-  res.send(TemplateManager.getTemplate("track", await ClientManager.spotifyClient.getTrackEmbed(req.params.id)));
+  res.send(
+    TemplateManager.getTemplate(
+      "track",
+      await ClientManager.spotifyClient.getTrackEmbed(req.params.id),
+      DomainConfig.getCurrentDomain(req)
+    )
+  );
 });
 
 // https://open.spotify.com/album/id
 openRouter.get("/album/:id", async (req, res) => {
-  res.send(TemplateManager.getTemplate("album", await ClientManager.spotifyClient.getAlbumEmbed(req.params.id)));
+  res.send(
+    TemplateManager.getTemplate(
+      "album",
+      await ClientManager.spotifyClient.getAlbumEmbed(req.params.id),
+      DomainConfig.getCurrentDomain(req)
+    )
+  );
 });
 
 // https://open.spotify.com/playlist/id
 openRouter.get("/playlist/:id", async (req, res) => {
-  res.send(TemplateManager.getTemplate("playlist", await ClientManager.spotifyClient.getPlaylistEmbed(req.params.id)));
+  res.send(
+    TemplateManager.getTemplate(
+      "playlist",
+      await ClientManager.spotifyClient.getPlaylistEmbed(req.params.id),
+      DomainConfig.getCurrentDomain(req)
+    )
+  );
 });
 
 // https://open.spotify.com/artist/id
 openRouter.get("/artist/:id", async (req, res) => {
-  res.send(TemplateManager.getTemplate("artist", await ClientManager.spotifyClient.getArtistEmbed(req.params.id)));
+  res.send(
+    TemplateManager.getTemplate(
+      "artist",
+      await ClientManager.spotifyClient.getArtistEmbed(req.params.id),
+      DomainConfig.getCurrentDomain(req)
+    )
+  );
 });
 
 // handles redirecting to a provider
