@@ -1,16 +1,18 @@
+// down.ts
+
 export function initDownPage() {
-window.addEventListener("DOMContentLoaded", () => {
-        const openOnSpotify = document.getElementById("open-on-spotify") as HTMLAnchorElement
+  window.addEventListener("DOMContentLoaded", () => {
+    const openOnSpotify = document.getElementById("open-on-spotify") as HTMLAnchorElement;
 
-    if (!openOnSpotify || !window.location.hash) return
+    if (!openOnSpotify || !window.location.hash) return;
 
-    const hash = decodeURIComponent(window.location.hash)
-    const parts = hash.split("/").slice(-2)
+    const hash = decodeURIComponent(window.location.hash);
+    const parts = hash.split("/").slice(-2);
 
-    console.log(parts)
+    console.log(parts);
 
-    const [ type, id ] = parts
+    const [type, id] = parts;
 
-    openOnSpotify.href = `https://open.spotify.com/${type}/${id}`
-})
+    openOnSpotify.href = `https://open.spotify.com/${type}/${id}`;
+  });
 }

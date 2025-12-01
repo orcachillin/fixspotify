@@ -1,138 +1,146 @@
+/* shared.css */
+
 :root {
-	--dark: #121212;
-	--light: #FFFFFF;
-	--accentColor: #1DB954;
-	--discordGrey: #1F1F1F;
-	--softGrey: #747474;
-	--linkBlue: #0EA8F1;
+  --dark: #121212;
+  --light: #ffffff;
+  --accentColor: #1db954;
+  --discordGrey: #1f1f1f;
+  --softGrey: #747474;
+  --linkBlue: #0ea8f1;
 }
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: "Roboto Mono", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Mono", sans-serif;
 }
 
 ::selection {
-	color: var(--dark);
-	background: var(--linkBlue);
+  color: var(--dark);
+  background: var(--linkBlue);
 }
 
 ::-moz-selection {
-	color: var(--dark);
-	background: var(--linkBlue);
+  color: var(--dark);
+  background: var(--linkBlue);
 }
 
 body {
-	min-height: 100vh;
-	height: 100%;
-	padding: 2rem;
-	display: flex;
-	flex-direction: column;
-	gap: 2rem;
-	background: url("../assets/images/background.webp") no-repeat center center fixed;
-	background-size: cover;
-	color: var(--light);
+  min-height: 100vh;
+  height: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: url("../assets/images/background.webp") no-repeat center center fixed;
+  background-size: cover;
+  color: var(--light);
 }
 
-h1, h2, h3, h4, h5, h6 {
-	font-size: 1.25rem;
-	font-weight: 400;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1.25rem;
+  font-weight: 400;
 }
 
-a:focus, 
-input:focus, 
+a:focus,
+input:focus,
 button:focus {
-	outline: 1px solid var(--linkBlue);
+  outline: 1px solid var(--linkBlue);
 }
 
 a {
-	color: var(--light);
-	text-decoration: none;
+  color: var(--light);
+  text-decoration: none;
 }
 
 ul {
-	list-style: none;
+  list-style: none;
 }
 
 .grid-wrapper,
 .grid-wrapper-index {
-	flex: 1;
-	display: grid;
-	grid-template-columns: 400px minmax(0, 1fr);
-	grid-template-areas: "sidebar content";
-	gap: 8rem;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 400px minmax(0, 1fr);
+  grid-template-areas: "sidebar content";
+  gap: 8rem;
 }
 
 @media (max-width: 768px) {
-	body {
-		padding: 1rem;
-		background: var(--dark);
-	}
+  body {
+    padding: 1rem;
+    background: var(--dark);
+  }
 }
 
 @media (max-width: calc(868px + 8rem)) {
-	.grid-wrapper {
-		grid-template-columns: 1fr;
-		grid-template-areas: 
-			"content"
-			"sidebar";
-		grid-gap: 2rem;
-	}
+  .grid-wrapper {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "content"
+      "sidebar";
+    grid-gap: 2rem;
+  }
 
-	.grid-wrapper-index {
-		grid-template-columns: 1fr;
-		grid-template-areas: 
-			"sidebar"
-			"content";
-		grid-gap: 2rem;
-	}
+  .grid-wrapper-index {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "sidebar"
+      "content";
+    grid-gap: 2rem;
+  }
 }
 
 aside {
-	grid-area: sidebar;
+  grid-area: sidebar;
 }
 
 main {
-	grid-area: content;
+  grid-area: content;
 }
 
-aside, main {
-	display: flex;
-	flex-direction: column;
-	gap: 2rem;
+aside,
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .about {
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-	font-size: 1rem;
-	text-wrap-style: balance;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1rem;
+  text-wrap-style: balance;
 }
 
 .tips {
-	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
-	font-size: 0.875rem;
-	text-wrap-style: balance;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  text-wrap-style: balance;
 }
 
 .tips p a,
 .error .more-info {
-	position: relative;
-	width: fit-content;
-	color: var(--linkBlue);
-	display: inline-flex;
-	gap: 0.25rem;
-	text-transform: uppercase;
+  position: relative;
+  width: fit-content;
+  color: var(--linkBlue);
+  display: inline-flex;
+  gap: 0.25rem;
+  text-transform: uppercase;
 }
 
 .tips p a::before,
 .error .more-info::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -0.125rem;
   left: 0;
@@ -150,81 +158,82 @@ aside, main {
 
 .tips p a::after,
 .error .more-info::after {
-  content: '↗';
-  font-family: 'Inter', sans-serif;
+  content: "↗";
+  font-family: "Inter", sans-serif;
 }
 
 .error {
-	padding: 1rem;
-	border: 1px solid var(--softGrey);
-	background-color: rgba(18, 18, 18, 0.75);
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--softGrey);
+  background-color: rgba(18, 18, 18, 0.75);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .error p {
-	font-size: 0.875rem;
-	color: var(--softGrey);
+  font-size: 0.875rem;
+  color: var(--softGrey);
 }
 
 .error .back {
-	width: fit-content;
-	padding: 0.25rem 0.75rem;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	gap: 0.5rem;
-	background-color: var(--accentColor);
-	color: var(--dark);
-	text-transform: uppercase;
-	transition: all 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
-	overflow: hidden;
+  width: fit-content;
+  padding: 0.25rem 0.75rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--accentColor);
+  color: var(--dark);
+  text-transform: uppercase;
+  transition: all 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  overflow: hidden;
 }
 
 .error .back:hover {
-	box-shadow: inset 0 0 1px 1px var(--accentColor),
-							inset 1.5rem 0 0.625rem 1px var(--accentColor);
-	background-color: var(--dark);
-	color: var(--accentColor);
+  box-shadow:
+    inset 0 0 1px 1px var(--accentColor),
+    inset 1.5rem 0 0.625rem 1px var(--accentColor);
+  background-color: var(--dark);
+  color: var(--accentColor);
 }
 
 .error .back:hover::before {
-	color: var(--dark);
-	transform: translate(-0.5rem);
+  color: var(--dark);
+  transform: translate(-0.5rem);
 }
 
 .error .back::before {
-	content: '';
-	font-family: 'Inter', sans-serif;
-	transition: transform 300ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  content: "";
+  font-family: "Inter", sans-serif;
+  transition: transform 300ms cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 @keyframes lr {
   0% {
-		transform: translate(0.7rem);
+    transform: translate(0.7rem);
   }
   100% {
-		transform: translate(-0.5rem);
+    transform: translate(-0.5rem);
   }
 }
 
 .error-code {
-	width: 100%;
-	height: 100%;
-	border: 1px solid var(--softGrey);
-	background-color: rgba(18, 18, 18, 0.5);
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--softGrey);
+  background-color: rgba(18, 18, 18, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .error-code svg {
-	font-size: 16rem;
-	font-weight: 700;
-	font-style: italic;
+  font-size: 16rem;
+  font-weight: 700;
+  font-style: italic;
   width: 100%;
-	height: 100%;
+  height: 100%;
 }
 
 .error-code svg text {
@@ -232,46 +241,46 @@ aside, main {
   stroke: var(--accentColor);
   stroke-width: 0.5px;
   stroke-linejoin: round;
-	transform: rotate(15deg);
-	transform-origin: center;
+  transform: rotate(15deg);
+  transform-origin: center;
 }
 
 .error-code svg text:first-child {
   fill: none;
-	transition: transform 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: transform 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .error-code svg text:last-child {
   stroke: var(--light);
-	transition: transform 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: transform 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .error-code:hover svg text {
-	transform: rotate(-15deg);
+  transform: rotate(-15deg);
 }
 
 .error-code:hover svg text:last-child {
-	transform: rotate(-10deg);
+  transform: rotate(-10deg);
 }
 
 .error-hide {
-	display: flex;
+  display: flex;
 }
 
 @media (max-width: calc(868px + 8rem)) {
-	.error-hide {
-		display: none;
-	}
+  .error-hide {
+    display: none;
+  }
 
-	.error-wrapper {
-		grid-template-areas: "content";
-	}
+  .error-wrapper {
+    grid-template-areas: "content";
+  }
 }
 
 .coffee {
-	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
-	font-size: 0.875rem;
-	text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
 }

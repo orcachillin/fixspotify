@@ -1,8 +1,10 @@
-import '../styles/visualizer.css'
-import '../styles/providers.css'
-import { providers } from "../scripts/providers.ts"
-import placeholder from "../assets/images/placeholder.svg"
-import ColorThief from 'colorthief';
+// visualizer.ts
+
+import "../styles/visualizer.css";
+import "../styles/providers.css";
+import { providers } from "../scripts/providers.ts";
+import placeholder from "../assets/images/placeholder.svg";
+import ColorThief from "colorthief";
 
 interface ItemData {
   album: string;
@@ -14,16 +16,16 @@ interface ItemData {
   images: string[];
 }
 
-const url = new URL(location.href)
-const type = url.searchParams.get("type")
-const id = url.searchParams.get("id")
+const url = new URL(location.href);
+const type = url.searchParams.get("type");
+const id = url.searchParams.get("id");
 if (!type || !id) {
-    document.body.innerHTML = "Invalid parameters"
-    throw new Error("Invalid parameters")
+  document.body.innerHTML = "Invalid parameters";
+  throw new Error("Invalid parameters");
 }
 
-function getColors(image: HTMLImageElement): Promise<{ac: string, bg: string}> {
-  return new Promise((resolve, reject) => {
+function getColors(image: HTMLImageElement): Promise<{ ac: string; bg: string }> {
+  return new Promise((resolve, _reject) => {
     const colorThief = new ColorThief();
 
     if (!image.complete) {
@@ -33,19 +35,19 @@ function getColors(image: HTMLImageElement): Promise<{ac: string, bg: string}> {
         const bg = correctColor(color, 8);
         resolve({
           ac: `rgb(${ac[0]}, ${ac[1]}, ${ac[2]})`,
-          bg: `rgb(${bg[0]}, ${bg[1]}, ${bg[2]})`
+          bg: `rgb(${bg[0]}, ${bg[1]}, ${bg[2]})`,
         });
-      }
+      };
     } else {
-        const color = colorThief.getColor(image);
-        const ac = correctColor(color);
-        const bg = correctColor(color, 8);
-        resolve({
-          ac: `rgb(${ac[0]}, ${ac[1]}, ${ac[2]})`,
-          bg: `rgb(${bg[0]}, ${bg[1]}, ${bg[2]})`
-        });
+      const color = colorThief.getColor(image);
+      const ac = correctColor(color);
+      const bg = correctColor(color, 8);
+      resolve({
+        ac: `rgb(${ac[0]}, ${ac[1]}, ${ac[2]})`,
+        bg: `rgb(${bg[0]}, ${bg[1]}, ${bg[2]})`,
+      });
     }
-  })
+  });
 }
 
 function correctColor(color: number[], targetLuma = 128): number[] {
@@ -61,13 +63,7 @@ function correctColor(color: number[], targetLuma = 128): number[] {
   }
 }
 
-function addTrack(options: {
-  number: number,
-  id: string,
-  name: string,
-  artists: string,
-  duration: number
-}) {
+function addTrack(options: { number: number; id: string; name: string; artists: string; duration: number }) {
   const tracksContainer = document.getElementById("tracks") as HTMLDivElement;
   const trackTemplate = document.getElementById("track-template") as HTMLAnchorElement;
   const track = trackTemplate.cloneNode(true) as HTMLAnchorElement;
@@ -90,15 +86,15 @@ function addTrack(options: {
 
   track.removeAttribute("hidden");
   track.href = `/view?type=track&id=${options.id}`;
-  track.title = `${options.name} by ${options.artists}`
+  track.title = `${options.name} by ${options.artists}`;
   // track.href = `https://open.fixspotify.com/intl-fr/track/${options.id}`;
   // console.log(options);
-  track.style.display = 'flex';
-  tracksContainer.style.display = 'grid';
+  track.style.display = "flex";
+  tracksContainer.style.display = "grid";
   tracksContainer.appendChild(track);
 }
 
-async function fetchData(): Promise<ItemData>  {
+async function fetchData(): Promise<ItemData> {
   const response = await fetch(`https://open.fixspotify.com/api/info/${type}/${id}`);
   return await response.json();
 }
@@ -116,28 +112,28 @@ export async function initVisualizer() {
   const artistEl = document.getElementById("artist") as HTMLSpanElement;
 
   switch (type) {
-    case 'track':
+    case "track":
       if (coverEl) coverEl.src = data.albumArt ? data.albumArt : placeholder;
       if (titleEl) titleEl.textContent = data.name;
       if (albumEl && data.name != data.album) albumEl.textContent = data.album;
       if (artistEl) artistEl.textContent = data.artists;
       break;
-    case 'album':
+    case "album":
       if (coverEl) coverEl.src = data.images[0] ? data.images[0] : placeholder;
       if (titleEl) titleEl.textContent = data.name;
       if (albumEl) albumEl.textContent = data.album;
       if (artistEl) artistEl.textContent = data.artists;
       data.tracks!.forEach((track, index) => {
-          addTrack({
-              number: index + 1,
-              id: track.id,
-              name: track.name,
-              artists: track.artists,
-              duration: track.duration
-          })
-      })
+        addTrack({
+          number: index + 1,
+          id: track.id,
+          name: track.name,
+          artists: track.artists,
+          duration: track.duration,
+        });
+      });
       break;
-    case 'artist':
+    case "artist":
       if (coverEl) coverEl.src = data.images[0] ? data.images[0] : placeholder;
       if (titleEl) titleEl.textContent = data.name;
       if (albumEl) albumEl.textContent = data.genres;
@@ -146,7 +142,7 @@ export async function initVisualizer() {
     default:
       break;
   }
-  
+
   const coverColor = await getColors(coverEl);
   container.setAttribute("style", `--coverColor: ${coverColor.ac}; --bgCoverColor: ${coverColor.bg}`);
 }
@@ -156,9 +152,9 @@ export function initProvidersRedirect() {
 
   if (types.includes(type!)) {
     const providersList = Object.entries(providers)
-    .filter(([_, provider]) => !provider.disabled)
-    .map(([_, provider]) => {
-      return `
+      .filter(([_, provider]) => !provider.disabled)
+      .map(([_, provider]) => {
+        return `
         <li class="provider-item" style="--providerColor: ${provider.color}">
           <a href="/redirect/${_}/${type}/${id}" class="provider">
             <img src="${provider.icon}" alt="${provider.name} icon">
@@ -166,7 +162,8 @@ export function initProvidersRedirect() {
           </a>
         </li>
       `;
-    }).join('');
+      })
+      .join("");
 
     const availableProviders = `
       <section class="select-provider">
@@ -176,7 +173,7 @@ export function initProvidersRedirect() {
         </ul>
       </section>
     `;
-    const availableProvidersContainer = document.getElementById('providers-redirect-container');
+    const availableProvidersContainer = document.getElementById("providers-redirect-container");
     if (availableProvidersContainer) {
       availableProvidersContainer.innerHTML = availableProviders;
     }

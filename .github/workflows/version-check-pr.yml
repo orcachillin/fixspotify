@@ -1,0 +1,49 @@
+name: Version Bump Check on PR
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  version-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Get PR branch version
+        id: pr-version
+        run: |
+          PR_VERSION=$(node -p "require('./package.json').version")
+          echo "version=$PR_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Checkout base branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.base_ref }}
+
+      - name: Get base branch version
+        id: base-version
+        run: |
+          BASE_VERSION=$(node -p "require('./package.json').version")
+          echo "version=$BASE_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Compare versions
+        run: |
+          PR_VERSION="${{ steps.pr-version.outputs.version }}"
+          BASE_VERSION="${{ steps.base-version.outputs.version }}"
+
+          echo "Base version: $BASE_VERSION"
+          echo "PR version: $PR_VERSION"
+
+          if [ "$PR_VERSION" = "$BASE_VERSION" ]; then
+            echo "❌ Version has not been bumped in package.json"
+            echo "Current version: $BASE_VERSION"
+            echo "Please update the version in package.json before merging"
+            exit 1
+          else
+            echo "✅ Version has been bumped from $BASE_VERSION to $PR_VERSION"
+          fi

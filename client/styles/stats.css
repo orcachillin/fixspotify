@@ -1,60 +1,62 @@
+/* stats.css */
+
 .stats {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .stats .stats-title {
-	font-size: 1.25rem;
-	text-transform: uppercase;
+  font-size: 1.25rem;
+  text-transform: uppercase;
 }
 
 .stats .stats-panel {
-	width: 100%;
-	display: grid;
+  width: 100%;
+  display: grid;
   grid-template-columns: 1fr 1fr;
-	grid-template-areas: 
-		"total total"
-		"track album"
-		"last last";
-	grid-gap: 2rem;
-	gap: 1rem;
+  grid-template-areas:
+    "total total"
+    "track album"
+    "last last";
+  grid-gap: 2rem;
+  gap: 1rem;
 }
 
 .stats .stats-panel .stats-total {
-	grid-area: total;
+  grid-area: total;
 }
 
 .stats .stats-panel .stats-last {
-	grid-area: last;
+  grid-area: last;
 }
 
 .stats .stats-panel > section {
-	height: fit-content;
-	padding: 0.5rem;
-	display: flex;
-	flex-direction: column;
-	gap: 0.125rem;
-	background-color: var(--discordGrey);
-	border: 1px solid var(--softGrey);
-	transition: box-shadow 300ms cubic-bezier(0.17, 0.42, 0.51, 0.93);
+  height: fit-content;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  background-color: var(--discordGrey);
+  border: 1px solid var(--softGrey);
+  transition: box-shadow 300ms cubic-bezier(0.17, 0.42, 0.51, 0.93);
 }
 
 .stats .stats-panel > section:hover {
-	box-shadow: inset 0 -2.5rem 2.5rem 0 var(--dark);
+  box-shadow: inset 0 -2.5rem 2.5rem 0 var(--dark);
 }
 
 .stats .stats-panel > section > .animated-number {
   display: flex;
   overflow: hidden;
-	font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .stats .stats-panel > section > .animated-number .digit-wrapper {
   position: relative;
   height: 1lh;
-	width: 1ch;
+  width: 1ch;
   display: inline-block;
   overflow: hidden;
 }
@@ -64,65 +66,65 @@
   top: 0;
   left: 0;
   transition: transform 300ms cubic-bezier(0.165, 0.84, 0.44, 1);
-	font-family: 'Kode Mono', monospace;
+  font-family: "Kode Mono", monospace;
 }
 
 .stats .stats-panel > section > span:last-child,
-.stats .stats-panel > section > a > span:last-child  {
-	z-index: 1;
-	color: var(--softGrey);
-	text-transform: uppercase;
+.stats .stats-panel > section > a > span:last-child {
+  z-index: 1;
+  color: var(--softGrey);
+  text-transform: uppercase;
 }
 
 .stats .stats-panel .stats-last {
-	padding: 0;
-	position: relative;
-	width: 100%;
-	overflow: hidden;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
 }
 
 .stats .stats-panel .stats-last:has(a:focus) {
-	border: 1px solid var(--linkBlue);
+  border: 1px solid var(--linkBlue);
 }
 
 .stats .stats-panel .stats-last a {
-	height: fit-content;
-	display: flex;
-	flex-direction: column;
-	gap: 0.125rem;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
 }
 
 .stats .stats-panel .stats-last a img {
-	z-index: 0;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	aspect-ratio: 1 / 1;
-	filter: brightness(0.5);
+  z-index: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  filter: brightness(0.5);
   animation: fadeIn 200ms ease-in;
 }
 
 .stats .stats-panel .stats-last a .song-details {
-	padding: 0.5rem;
-	z-index: 1;
-	display: flex;
-	flex-direction: column;
-	gap: 0.25rem;
+  padding: 0.5rem;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .stats .stats-panel .stats-last a .song-artist {
-	font-size: 0.875rem;
+  font-size: 0.875rem;
 }
 
 .stats .stats-panel .stats-last a > span:last-child {
-	z-index: 1;
-	margin-top: auto;
-	padding: 0.5rem;
-	background: linear-gradient(180deg, #12121200 0%, #121212 100%);
+  z-index: 1;
+  margin-top: auto;
+  padding: 0.5rem;
+  background: linear-gradient(180deg, #12121200 0%, #121212 100%);
 }
 
 .animated-text {
@@ -133,7 +135,7 @@
 .animated-text .text-wrapper {
   position: relative;
   height: 1lh;
-	width: 100%;
+  width: 100%;
   display: inline-block;
   overflow: hidden;
 }
@@ -142,11 +144,11 @@
   position: absolute;
   top: 0;
   left: 0;
-	width: 100%;
+  width: 100%;
   overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	font-family: 'Inter', sans-serif;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-family: "Inter", sans-serif;
   transition: transform 300ms cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 

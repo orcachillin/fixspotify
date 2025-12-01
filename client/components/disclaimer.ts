@@ -1,4 +1,6 @@
-import '../styles/disclaimer.css'
+// disclaimer.ts
+
+import "../styles/disclaimer.css";
 
 export function initDisclaimer() {
   const disclaimer = `
@@ -6,9 +8,9 @@ export function initDisclaimer() {
       <span>This tool is not affiliated with Spotify.</span>
     </section>
   `;
-  const disclaimerContainer = document.getElementById('disclaimer-container');
+  const disclaimerContainer = document.getElementById("disclaimer-container");
   if (disclaimerContainer) {
-      disclaimerContainer.innerHTML = disclaimer;
+    disclaimerContainer.innerHTML = disclaimer;
   }
 }
 initDisclaimer();

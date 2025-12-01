@@ -1,5 +1,7 @@
-import '../styles/nav.css'
-import fixspotify from '../assets/icons/fixspotify.svg';
+// nav.ts
+
+import "../styles/nav.css";
+import fixspotify from "../assets/icons/fixspotify.svg";
 
 export function initNav() {
   const nav = `
@@ -19,18 +21,17 @@ export function initNav() {
       </div>
     </nav>
   `;
-  const navContainer = document.getElementById('nav-container');
+  const navContainer = document.getElementById("nav-container");
   if (navContainer) {
     navContainer.innerHTML = nav;
     const currentPath = window.location.pathname;
-    const links = navContainer.querySelectorAll('.nav-link');
-    links.forEach(link => {
-      const href = link.getAttribute('href');
+    const links = navContainer.querySelectorAll(".nav-link");
+    links.forEach((link) => {
+      const href = link.getAttribute("href");
       if (href && href.endsWith(currentPath)) {
-        link.classList.add('active');
+        link.classList.add("active");
       }
     });
   }
-
 }
 initNav();

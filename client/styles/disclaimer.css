@@ -1,11 +1,13 @@
+/* disclaimer.css */
+
 .disclaimer {
-	width: fit-content;
-	padding: 0.125rem 0.5rem;
-	border: 1px solid var(--dark);
-	border-radius: 0.25rem;
-	background-color: var(--accentColor);
-	color: var(--dark);
-	font-size: 0.875rem;
-	text-transform: uppercase;
+  width: fit-content;
+  padding: 0.125rem 0.5rem;
+  border: 1px solid var(--dark);
+  border-radius: 0.25rem;
+  background-color: var(--accentColor);
+  color: var(--dark);
+  font-size: 0.875rem;
+  text-transform: uppercase;
   /* -webkit-box-decoration-break: clone; */
 }

@@ -1,5 +1,7 @@
-import '../styles/providers.css'
-import { providers } from '../scripts/providers.ts'
+// availableProviders.ts
+
+import "../styles/providers.css";
+import { providers } from "../scripts/providers.ts";
 
 export function initAvailableProviders() {
   const providersList = Object.entries(providers)
@@ -12,7 +14,8 @@ export function initAvailableProviders() {
         <span>${provider.name}</span>
       </li>
     `;
-    }).join('');
+    })
+    .join("");
 
   const availableProviders = `
     <section class="available-providers">
@@ -22,7 +25,7 @@ export function initAvailableProviders() {
       </ul>
     </section>
   `;
-  const availableProvidersContainer = document.getElementById('available-providers-container');
+  const availableProvidersContainer = document.getElementById("available-providers-container");
   if (availableProvidersContainer) {
     availableProvidersContainer.innerHTML = availableProviders;
   }

@@ -1,3 +1,5 @@
+// vite.config.ts
+
 import 'dotenv/config';
 import { defineConfig } from "vite";
 import { readdirSync } from "fs";
@@ -39,7 +41,7 @@ export default defineConfig({
             preventAssignment: true,
             include: ["**/*.html"],
             values: {
-                "CF_ANALYTICS": `{"token": "${process.env.CF_ANALYTICS_ID}"}` || "",
+                "CF_ANALYTICS": process.env.CF_ANALYTICS_ID ? `{'token': '${process.env.CF_ANALYTICS_ID}'}` : "''",
             }
         }),
     ]

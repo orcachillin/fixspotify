@@ -1,0 +1,95 @@
+# docker-compose.yml
+
+---
+
+services:
+  fixspotify-dev:
+    build:
+      context: .
+      target: development
+      dockerfile: Dockerfile
+
+    volumes:
+      # Mount source files (needed for container startup)
+      - ./src:/app/src:ro
+      - ./client:/app/client:ro
+
+      # Writable dist for build outputs from watch processes
+      - ./dist:/app/dist
+
+      # Anonymous volume to preserve container's node_modules
+      # This prevents the host's node_modules from overriding the container's
+      - /app/node_modules
+
+      # NOTE: src/ and client/ are mounted AND watched
+      # Volume mounts provide initial files, watch handles updates
+      # Warning about "path also declared by volume" is informational only
+
+    # Load environment variables from .env file first (optional - will be ignored if file doesn't exist)
+    env_file:
+      - path: .env
+        required: false
+
+    # Environment variables with defaults (takes precedence over .env if file exists)
+    environment:
+      - NODE_ENV=${NODE_ENV:-development}
+      - PORT=${PORT:-3000}
+      - DEV_FORCE_OPEN=${DEV_FORCE_OPEN:-true}
+
+    # Ports (comment out or remove to run without publishing)
+    ports:
+      - "${HOST_PORT:-3000}:${PORT:-3000}"  # Express server
+      - "${VITE_PORT:-5173}:5173"  # Vite dev server
+
+    # Run full dev workflow: Vite watch, TypeScript watch, and nodemon
+    command: npm run dev
+
+    # Development restart policy - only restart on failure
+    restart: on-failure
+
+    # Health check using existing /stats endpoint
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:${PORT:-3000}/stats"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+    # Development resource limits (generous for development)
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 1G
+
+    # Docker watch for automatic sync and rebuild (use with `docker compose watch`)
+    develop:
+      watch:
+        # Sync source files - triggers rebuild in container's watch mode
+        - action: sync
+          path: ./src
+          target: /app/src
+          ignore:
+            - "**/*.test.ts"
+            - "**/*.spec.ts"
+
+        # Sync client files - triggers Vite rebuild
+        - action: sync
+          path: ./client
+          target: /app/client
+          ignore:
+            - "**/*.test.ts"
+            - "**/*.spec.ts"
+
+        # Sync config files - restart container on change
+        - action: sync+restart
+          path: ./tsconfig.json
+          target: /app/tsconfig.json
+
+        - action: sync+restart
+          path: ./vite.config.ts
+          target: /app/vite.config.ts
+
+        # Rebuild container if package.json changes
+        - action: rebuild
+          path: ./package.json

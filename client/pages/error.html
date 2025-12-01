@@ -1,60 +1,65 @@
-<!DOCTYPE html>
+<!-- error.html -->
+
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta http-equiv="refresh" content="5;url=https://fixspotify.com" /> -->
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<!-- <meta http-equiv="refresh" content="5;url=https://fixspotify.com" /> -->
+    <meta name="theme-color" content="#1DB954" />
+    <meta property="og:site_name" content="fixSpotify" />
+    <meta property="og:title" content="Whoops!" />
+    <meta property="og:description" content="We couldn't find that one, sorry!" />
 
-	<meta name="theme-color" content="#1DB954" />
-	<meta property="og:site_name" content="fixSpotify" />
-	<meta property="og:title" content="Whoops!" />
-	<meta property="og:description" content="We couldn't find that one, sorry!" />
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/fixspotify.svg" />
+    <link rel="apple-touch-icon" href="../assets/icons/fixspotify.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100..700;1,100..700&family=Kode+Mono:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <link rel="stylesheet" href="../styles/shared.css" />
+    <script src="../scripts/init.ts" type="module"></script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="CF_ANALYTICS"></script>
+    <title>fixSpotify | error</title>
+  </head>
 
-	<link rel="icon" type="image/svg+xml" href="../assets/icons/fixspotify.svg">
-	<link rel="apple-touch-icon" href="../assets/icons/fixspotify.svg">
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
-		rel="stylesheet" />
-	<link
-		href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100..700;1,100..700&family=Kode+Mono:wght@400..700&display=swap"
-		rel="stylesheet">
-	<link rel="preconnect" href="https://rsms.me/">
-	<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-	<link rel="stylesheet" href="../styles/shared.css" />
-	<script src="../scripts/init.ts" type="module"></script>
-	<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='CF_ANALYTICS'></script>
-	<title>fixSpotify | error</title>
-</head>
-
-<body>
-	<section id="nav-container"></section>
-	<section class="grid-wrapper error-wrapper">
-		<aside class="error-hide">
-			<section class="about">
-				<p>Fix your Spotify links</p>
-				<p>By simply replacing <span style="color: var(--softGrey)">open.spotify.com</span> with <span
-						style="color: var(--accentColor)">open.fixspotify.com</span> in your shared links, fixSpotify
-					ensures that your Spotify links display correctly and consistently.</p>
-			</section>
-			<section id="stats-container"></section>
-			<section id="disclaimer-container"></section>
-			<section id="socials-container"></section>
-		</aside>
-		<main>
-			<section class="error">
-				<h2>Whoops! We couldn't find that one, sorry!</h2>
-				<a class="back" href="/">Go back</a>
-			</section>
-			<section class="error-code">
-				<svg viewBox="0 0 450 50">
-					<text x="0" y="115">404</text>
-					<text x="-5" y="110">404</text>
-				</svg>
-			</section>
-		</main>
-	</section>
-</body>
-
+  <body>
+    <section id="nav-container"></section>
+    <section class="grid-wrapper error-wrapper">
+      <aside class="error-hide">
+        <section class="about">
+          <p>Fix your Spotify links</p>
+          <p>
+            By simply replacing <span style="color: var(--softGrey)">open.spotify.com</span> with
+            <span style="color: var(--accentColor)">open.fixspotify.com</span> in your shared links, fixSpotify ensures
+            that your Spotify links display correctly and consistently.
+          </p>
+        </section>
+        <section id="stats-container"></section>
+        <section id="disclaimer-container"></section>
+        <section id="socials-container"></section>
+      </aside>
+      <main>
+        <section class="error">
+          <h2>Whoops! We couldn't find that one, sorry!</h2>
+          <a class="back" href="/">Go back</a>
+        </section>
+        <section class="error-code">
+          <svg viewBox="0 0 450 50">
+            <text x="0" y="115">404</text>
+            <text x="-5" y="110">404</text>
+          </svg>
+        </section>
+      </main>
+    </section>
+  </body>
 </html>

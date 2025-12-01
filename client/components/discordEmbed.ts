@@ -1,6 +1,8 @@
-import '../styles/discordEmbed.css'
-import cover from '../assets/images/starfall.webp'
-import profile from '../assets/images/profile.webp'
+// discordEmbed.ts
+
+import "../styles/discordEmbed.css";
+import cover from "../assets/images/starfall.webp";
+import profile from "../assets/images/profile.webp";
 
 export function initDiscordEmbed() {
   const discordEmbed = `
@@ -40,7 +42,7 @@ export function initDiscordEmbed() {
       </section>
     </section>
   `;
-  const discordEmbedContainer = document.getElementById('discord-embed-container');
+  const discordEmbedContainer = document.getElementById("discord-embed-container");
   if (discordEmbedContainer) {
     discordEmbedContainer.innerHTML = discordEmbed;
   }
