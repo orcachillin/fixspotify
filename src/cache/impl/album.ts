@@ -11,7 +11,7 @@ export interface MinimalAlbum {
     tracks: AlbumTrack[];
     genres?: string
     url: string;
-    art: string;
+    image: string;
     images: string[];
 }
 
@@ -48,7 +48,7 @@ export const AlbumCache = new UpdateableCache<MinimalAlbum>(async (id: string) =
             }
         }) || [],
         url: album.externalURL.spotify,
-        art: album.images[0].url,
+        image: album.images[0].url,
         images: album.images.map((image) => image.url.split("/").pop()!)
     }
 }, {

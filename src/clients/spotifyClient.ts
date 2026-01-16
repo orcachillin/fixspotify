@@ -112,13 +112,13 @@ export default class SpotifyClient {
             releaseDate: album.releaseDate,
         });
 
-        StatsManager.addRequest("album", album.id, album.name, album.artists, `https://i.scdn.co/image/${album.art}`);
+        StatsManager.addRequest("album", album.id, album.name, album.artists, `https://i.scdn.co/image/${album.image}`);
 
         return {
             id: album.id,
             title: album.name,
             artist: album.artists,
-            image: `https://i.scdn.co/image/${album.art}`,
+            image: `https://i.scdn.co/image/${album.image}`,
             url: album.url,
             description: [
                 `By ${album.artists}`,
