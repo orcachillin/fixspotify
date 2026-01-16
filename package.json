@@ -18,7 +18,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@distube/ytsr": "^2.0.4",
+    "@distube/ytsr": "github:orcachillin/ytsr",
     "@gurrrrrrett3/protocol": "^1.0.1",
     "@rollup/plugin-replace": "^6.0.2",
     "dotenv": "^16.4.5",
