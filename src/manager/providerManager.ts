@@ -26,6 +26,10 @@ export default class ProviderManager {
         return !!ProviderManager.providers[provider]
     }
 
+    public static validateType(type: string): type is ProviderType {
+        return Object.values(ProviderType).includes(type as unknown as ProviderType)
+    }
+
     public static async getUrl(type: ProviderType, provider: string, id: string): Promise<string | undefined> {
         if (!ProviderManager.providers[provider]) return undefined;
 

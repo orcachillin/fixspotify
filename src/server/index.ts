@@ -5,6 +5,7 @@ import openRouter from "./routers/open.js";
 import indexRouter from "./routers/index.js";
 import { Logger } from "@gurrrrrrett3/protocol";
 import linkRouter from "./routers/link.js";
+import apiRouter from "./routers/api.js";
 
 export default class Webserver {
 
@@ -47,6 +48,7 @@ export default class Webserver {
         })
 
         this.app.use("/_", express.static(resolve("./dist/client/_")))
+        this.app.use("/api", apiRouter)
 
     }
 

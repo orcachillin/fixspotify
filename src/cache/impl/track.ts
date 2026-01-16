@@ -7,11 +7,11 @@ export interface MinimalTrack {
     name: string;
     artists: string;
     duration: string;
-    album: string;
-    albumArt: string;
-    totalTracks: number;
+    album?: string;
+    albumArt?: string;
+    totalTracks?: number;
     trackNumber: number;
-    releaseDate: string;
+    releaseDate?: string;
     url: string;
 }
 
@@ -30,13 +30,13 @@ export const TrackCache = new UpdateableCache<MinimalTrack>(async (id: string) =
         name: track.name,
         artists: ClientManager.spotifyClient.formatArtists(track.artists),
         duration: ClientManager.spotifyClient.formatDuration(track.duration!),
-        album: track.album!.name,
-        albumArt: track.album!.images ? track.album!.images[0].url.split("/").pop()! : "",
-        images: track.album!.images.map((image) => image.url.split("/").pop()!),
-        totalTracks: track.album!.totalTracks,
+        album: track.album?.name || "unknown",
+        albumArt: track.album ? track.album.images ? track.album.images[0].url.split("/").pop()! : "" : undefined,
+        images: track.album ? track.album.images.map((image) => image.url.split("/").pop()!) : undefined,
+        totalTracks: track.album?.totalTracks,
         trackNumber: track.trackNumber
             ? track.trackNumber : 0,
-        releaseDate: ClientManager.spotifyClient.formatDate(track.album!.releaseDate, track.album!.releaseDatePrecision),
+        releaseDate: track.album ? ClientManager.spotifyClient.formatDate(track.album!.releaseDate, track.album!.releaseDatePrecision) : undefined,
         url: track.externalURL.spotify
     }
 }, {

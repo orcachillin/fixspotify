@@ -1,4 +1,14 @@
 import "dotenv/config";
+import { rmSync } from "fs";
+import { resolve } from "path";
+
+// annoying stupid ytsr dumps
+
+rmSync(resolve("./node_modules/@distube/ytsr/dumps/"), {
+    force: true,
+    recursive: true
+})
+
 import Webserver from "./server/index.js";
 import TemplateManager from "./manager/templateManager.js";
 import ProviderManager from "./manager/providerManager.js";

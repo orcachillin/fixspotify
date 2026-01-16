@@ -18,7 +18,7 @@ export default class YoutubeProvider extends Provider {
     }
 
     public async search(query: string, type?: ytsr.Options["type"]): Promise<string | undefined> {
-        const res = await ytsr(query, { limit: 1, type })
+        const res = await ytsr(query, { limit: 1, type }).catch()
         if (!res.items.length) return undefined;
         return res.items[0].url
     }
